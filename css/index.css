@@ -2,9 +2,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Lexend Deca';
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 #app {
@@ -106,6 +107,8 @@ button {
   background-size: 0% 100%;
   color: var(--light);
   display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 8px 16px;
   border-radius: 4px;
   transition-property: background-size;
@@ -116,6 +119,19 @@ button {
 
 button:hover {
   background-size: 100% 100%;
+}
+
+button[disabled] {
+  background-color: var(--grey);
+  background-image: linear-gradient(to right, var(--blurple), var(--blurple));
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 0% 100%;
+  color: var(--dark);
+}
+
+button .message {
+  margin: 0 8px;
 }
 
 ::placeholder {
@@ -190,8 +206,8 @@ label {
 .card {
   display: flex;
   flex-direction: column;
-  width: 256px;
-  height: calc((var(--heading-size) * 1.25) + 64px + 28px + 16px + 256px);
+  width: 100%;
+  height: calc((var(--heading-size) * 1.25) + 64px + 28px + 16px + 320px);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 32px var(--grey);
@@ -205,11 +221,11 @@ label {
 }
 
 .card:hover .media {
-  height: 128px;
+  height: 160px;
 }
 
 .card:hover .body {
-  height: calc((var(--heading-size) * 1.25) + 64px + 28px + 16px + 128px);
+  height: calc((var(--heading-size) * 1.25) + 64px + 28px + 16px + 160px);
 }
 
 .card .body {
@@ -227,7 +243,7 @@ label {
 
 .card .media {
   width: 100%;
-  height: 256px;
+  height: 320px;
   font-size: 0;
   background: var(--blurple);
   display: flex;
@@ -241,7 +257,6 @@ label {
 .card .media .material-symbols-rounded {
   font-size: 64px;
   color: var(--light);
-  user-select: none;
 }
 
 .card .body .content {
@@ -257,6 +272,7 @@ label {
   color: var(--dark);
   font-size: var(--heading-size);
   font-weight: 600;
+  align-self: start;
 }
 
 .card .body .content p {
@@ -285,6 +301,35 @@ label {
   background: var(--dark);
 }
 
+section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 32px 0;
+}
+
+section > h1 {
+  text-align: center;
+  margin: 0 0 16px 0;
+}
+
+section > .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1200px;
+}
+
+section > .content .panel {
+  width: 320px;
+/*   height: 100%; */
+}
+
+section > .content .read {
+  width: 50%;
+}
+
 /* Navigation Menu */
 
 nav {
@@ -305,6 +350,14 @@ nav {
 
 .logo span {
   font-size: 24px;
+  transition-property: opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+  cursor: pointer;
+}
+
+.logo span:hover {
+  opacity: 0.5;
 }
 
 .menu {
@@ -386,12 +439,16 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: row;
   width: 1200px;
   height: calc(100vh - 120px);
   margin: auto;
+  padding: 0;
 }
 
 #hero .content {
+  text-align: left;
+  flex-direction: column;
   width: 300px;
 }
 
@@ -422,6 +479,10 @@ form div {
 
 .scroll span {
   font-size: 48px;
-  animation: bob 0.5s alternate infinite;
+  animation-name: bob;
+  animation-delay: 0.5s;
+  animation-duration: 0.5s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
   cursor: pointer;
 }

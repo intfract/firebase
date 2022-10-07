@@ -14,6 +14,10 @@
   #hero {
     width: 800px;
   }
+
+  section > .content {
+    width: 800px;
+  }
 }
 
 @media only screen and (max-width: 800px) {
@@ -31,5 +35,17 @@
 
   #hero {
     width: 600px;
+  }
+
+  section > .content {
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 600px;
+  }
+
+  section > .content .read {
+    margin: 16px 0 0 0;
+    width: 320px;
+    text-align: center;
   }
 }

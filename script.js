@@ -13,12 +13,6 @@ for (const tag of tags) {
   tag.setAttribute('onpointerleave', 'ripplet.clear(this)')
 }
 
-let field = {}
-
-field.username = document.querySelector('form .username .text input')
-field.email = document.querySelector('form .email .text input')
-field.password = document.querySelector('form .password .text input')
-
 const form = document.querySelector('#join')
 form.addEventListener('submit', e => {
   e.preventDefault()
@@ -36,5 +30,10 @@ form.addEventListener('submit', e => {
     })
     .catch(error => {
       console.log(error)
+      if (error.code.split('/')[1] === 'email-already-in-use') {
+        console.log('EMAIL ALREADY IN USE!')
+        form.email.value = ''
+        form._x_dataStack[0].email = ''
+      }
     })
 })

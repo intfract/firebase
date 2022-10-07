@@ -6,17 +6,17 @@
   <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Int Fract</title>
-<!-- Google Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
-<!-- CSS Links -->
+  <!-- CSS Links -->
   <link href="css/animate.css" rel="stylesheet">
   <link href="css/index.css" rel="stylesheet">
   <link href="css/responsive.css" rel="stylesheet">
-<!-- Ripples -->
+  <!-- Ripples -->
   <script src="https://cdn.jsdelivr.net/npm/ripplet.js@1.1.0"></script>
 </head>
 
@@ -39,7 +39,9 @@
     <section id="hero">
       <div class="content">
         <h1>FREE FRIENDLY FANTASTIC</h1>
-        <p>This is some information about the website!</p>
+        <p>This website is dedicated to <strong>students</strong> and <strong>developers</strong> all around the world!
+          Feel <strong>free</strong> to
+          explore the <strong>fantastic</strong> math and science resources here!</p>
       </div>
       <div class="form-wrapper">
         <form id="join" x-data="{ password: '', email: '', username: '' }">
@@ -66,12 +68,51 @@
             </span>
             <span class="error" x-show="password.length < 8">Password is too short!</span>
           </div>
-          <button type="submit">Join</button>
+          <button type="submit"
+            :disabled="!username.trim() || !(email.includes('@') && email.split('@')[1].length > 2) || password.length < 8">
+            <span class="message">Join</span>
+            <span :class="icon"
+              x-show="username.trim() && email.includes('@') && email.split('@')[1].length > 2 && password.length >= 8">
+              person_add
+            </span>
+            <span :class="icon"
+              x-show="!username.trim() || !(email.includes('@') && email.split('@')[1].length > 2) || password.length < 8">
+              person_add_disabled
+            </span>
+          </button>
         </form>
       </div>
     </section>
     <section class="scroll">
       <span :class="icon">expand_more</span>
+    </section>
+    <section>
+      <h1>MATH</h1>
+      <div class="content">
+        <span class="panel">
+          <div class="card">
+            <span class="media">
+              <span class="material-symbols-rounded">calculate</span>
+            </span>
+            <span class="body">
+              <div class="content">
+                <a class="heading">Quadratic Equations</a>
+                <p>Quadratic functions form a parabola when graphed. Parabolas usually have two real answers because
+                  they cut the x-axis twice.</p>
+              </div>
+              <div class="tags">
+                <span class="tag">MATH</span>
+                <span class="tag">QUADRATICS</span>
+              </div>
+            </span>
+          </div>
+        </span>
+        <span class="read">
+          <h2>Quadratic Algebra</h2>
+          <p>Learn methods of solving quadratic equations and inequalities. This chapter explains concepts like
+            completing the square, factorising, and number theory in detail.</p>
+        </span>
+      </div>
     </section>
   </main>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>

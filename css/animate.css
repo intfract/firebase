@@ -7,3 +7,18 @@
     transform: translate(0, -16px);
   }
 }
+
+@keyframes load {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.material-symbols-rounded {
+  user-select: none;
+  animation: load 0.5s ease-in;
+}
