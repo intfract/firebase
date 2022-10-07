@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Int Fract</title>
+<!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+<!-- CSS Links -->
+  <link href="css/animate.css" rel="stylesheet">
+  <link href="css/index.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+<!-- Ripples -->
+  <script src="https://cdn.jsdelivr.net/npm/ripplet.js@1.1.0"></script>
+</head>
+
+<body>
+  <main id="app" x-data="{ icon: 'material-symbols-rounded' }">
+    <nav>
+      <div class="logo">
+        <span>INTFRACT</span>
+      </div>
+      <div class="menu">
+        <a href="#" class="link">HOME</a>
+        <a href="#" class="link">ABOUT</a>
+      </div>
+      <div class="actions">
+        <a class="btn">Login</a>
+        <a class="btn">Join</a>
+        <!--       <a id="logout" class="btn">Exit</a> -->
+      </div>
+    </nav>
+    <section id="hero">
+      <div class="content">
+        <h1>FREE FRIENDLY FANTASTIC</h1>
+        <p>This is some information about the website!</p>
+      </div>
+      <div class="form-wrapper">
+        <form id="join" x-data="{ password: '', email: '', username: '' }">
+          <h1>Join</h1>
+          <div class="username">
+            <span class="text">
+              <input type="text" name="username" required x-model="username">
+              <label>Username</label>
+            </span>
+            <span class="error" x-show="!username.trim()">No blank usernames</span>
+          </div>
+          <div class="email">
+            <span class="text">
+              <input type="text" name="email" required x-model="email">
+              <label>Email</label>
+            </span>
+            <span class="error" x-show="!(email.includes('@') && email.split('@')[1].length > 2)">Invalid email
+              address!</span>
+          </div>
+          <div class="password">
+            <span class="text">
+              <input type="password" name="password" required x-model="password">
+              <label>Password</label>
+            </span>
+            <span class="error" x-show="password.length < 8">Password is too short!</span>
+          </div>
+          <button type="submit">Join</button>
+        </form>
+      </div>
+    </section>
+    <section class="scroll">
+      <span :class="icon">expand_more</span>
+    </section>
+  </main>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCiYJrPF-P_oWyXUzqX3K-K14cJ3nm7DNo",
+      authDomain: "netfract.firebaseapp.com",
+      projectId: "netfract",
+      storageBucket: "netfract.appspot.com",
+      messagingSenderId: "765823543450",
+      appId: "1:765823543450:web:28079bd3f0793b1f815723",
+      measurementId: "G-1M26DDFL23"
+    }
+
+    const app = firebase.initializeApp(config)
+
+    // make auth and firestore references
+    const auth = firebase.auth()
+    const db = firebase.firestore()
+
+    // update firestore settings
+    db.settings({timestampsInSnapshots: true})
+  </script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
