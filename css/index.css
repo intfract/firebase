@@ -20,6 +20,7 @@ body {
   --darker: #2f3136;
   --darkest: #202225;
   --blurple: #5865f2;
+  --trans: #5865f220;
   --heading-size: 24px;
 }
 
@@ -330,6 +331,43 @@ section > .content .read {
   width: 50%;
 }
 
+.snackbar {
+  position: fixed;
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--dark);
+  color: var(--light);
+  border-radius: 4px;
+  left: 8px;
+  bottom: 8px;
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
+}
+
+.snack {
+  color: inherit;
+  margin: 0 8px 0 0;
+}
+
+.faded {
+  opacity: 0;
+}
+
+button.soft {
+  background: transparent;
+  color: var(--blurple);
+  transition-property: background;
+}
+
+button.soft:hover {
+  background: var(--trans);
+}
+
 /* Navigation Menu */
 
 nav {
@@ -339,6 +377,7 @@ nav {
   flex-direction: row;
   box-sizing: border-box;
   justify-content: center;
+  z-index: 128;
 }
 
 .logo {
@@ -346,6 +385,7 @@ nav {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  z-index: 128;
 }
 
 .logo span {
@@ -354,6 +394,7 @@ nav {
   transition-duration: 0.2s;
   transition-timing-function: ease-out;
   cursor: pointer;
+  z-index: 128;
 }
 
 .logo span:hover {
@@ -365,6 +406,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.5s;
 }
 
 .actions {
@@ -372,6 +414,7 @@ nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  z-index: 128;
 }
 
 .link {
@@ -431,6 +474,54 @@ nav {
 
 .actions .btn {
   margin: 0 0 0 8px;
+}
+
+.toggle {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  z-index: 128;
+}
+
+.ham {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 400ms;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.active .hamRotate {
+  transform: rotate(45deg);
+}
+.active .hamRotate180 {
+  transform: rotate(180deg);
+}
+.line {
+  fill: none;
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+  stroke: var(--dark);
+  stroke-width: 5.5;
+  stroke-linecap: round;
+}
+.ham4 .top {
+  stroke-dasharray: 40 121;
+}
+.ham4 .bottom {
+  stroke-dasharray: 40 121;
+}
+.active .ham4 .top {
+  stroke-dashoffset: -68px;
+}
+.active .ham4 .bottom {
+  stroke-dashoffset: -68px;
 }
 
 /* HERO */
