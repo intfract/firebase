@@ -8,6 +8,11 @@ body {
   overflow-x: hidden;
 }
 
+*::selection {
+  background: var(--blurple);
+  color: var(--light);
+}
+
 #app {
   width: 100%;
   height: 100%;
@@ -21,6 +26,9 @@ body {
   --darkest: #202225;
   --blurple: #5865f2;
   --trans: #5865f220;
+  --blue: #2c6fef;
+  --red: #e1503c;
+  --yellow: #eea71f;
   --heading-size: 24px;
 }
 
@@ -148,6 +156,11 @@ input {
   width: 200px;
 }
 
+ol, ul {
+  padding-inline-start: 20px;
+  margin: 0;
+}
+
 /* Components */
 
 .text {
@@ -255,6 +268,18 @@ label {
   transition-timing-function: ease-out;
 }
 
+.media.math {
+  background: var(--blue);
+}
+
+.media.science {
+  background: var(--yellow);
+}
+
+.media.coding {
+  background: var(--red);
+}
+
 .card .media .material-symbols-rounded {
   font-size: 64px;
   color: var(--light);
@@ -331,6 +356,14 @@ section > .content .read {
   width: 50%;
 }
 
+section > .content {
+  margin: 0 0 32px 0;
+}
+
+section > .content:last-child {
+  margin: 0;
+}
+
 .snackbar {
   position: fixed;
   padding: 8px 16px;
@@ -395,6 +428,7 @@ nav {
   transition-timing-function: ease-out;
   cursor: pointer;
   z-index: 128;
+  user-select: none;
 }
 
 .logo span:hover {
@@ -548,11 +582,16 @@ form {
   flex-direction: column;
   justify-content: space-between;
   height: 400px;
+  width: 232px;
 }
 
 form div {
   display: flex;
   flex-direction: column;
+}
+
+#login {
+  height: 320px;
 }
 
 .error {

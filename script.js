@@ -1,7 +1,7 @@
-const buttons = document.querySelectorAll('button:not(button[type=submit])')
-const tags = document.querySelectorAll('.tag')
-
 function ripple() {
+  const buttons = document.querySelectorAll('button:not(button[type=submit])')
+  const tags = document.querySelectorAll('.tag')
+
   for (const button of buttons) {
     if (Array.from(button.classList).includes('soft')) {
       button.setAttribute('onpointerdown', 'ripplet(arguments[0], { clearing: false, color: "#4865f2" })')
@@ -48,29 +48,26 @@ function dismiss(e) {
   window.setTimeout(() => bar.remove(), 1000)
 }
 
-const form = document.querySelector('#join')
-form.addEventListener('submit', e => {
-  e.preventDefault()
-  const username = form.username.value.trim()
-  const email = form.email.value.trim()
-  const password = form.password.value
-
-  auth.createUserWithEmailAndPassword(email, password)
-    .then(cred => {
-      console.log(`${username} joined the website using ${email}!`)
-      form.reset()
-      return cred.user.updateProfile({
-        displayName: username
-      })
+auth.onAuthStateChanged(user => {
+  if (user) {
+    const btns = document.querySelectorAll('nav .actions a')
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].remove()
+    }
+    const e = document.createElement('a')
+    e.setAttribute('id', 'logout')
+    e.setAttribute('class', 'btn')
+    document.querySelector('nav .actions').appendChild(e)
+    e.innerHTML = 'Exit'
+    e.addEventListener('click', e => {
+      e.preventDefault()
+      auth.signOut()
+      document.querySelector('nav .actions').innerHTML = `
+      <a class="btn" href="../join/">Login</a>
+      <a class="btn" href="../join/">Join</a>
+      `
     })
-    .catch(error => {
-      console.log(error)
-      const code = error.code.split('/')[1]
-      if (['email-already-in-use', 'invalid-email'].includes(code)) {
-        form.email.value = ''
-        form._x_dataStack[0].email = ''
-        let x = code.split('-').join(' ')
-        snack(x.charAt(0).toUpperCase() + x.slice(1) + '!', 'DISMISS')
-      }
-    })
+  } else {
+    console.log(`user signed out`)
+  }
 })
