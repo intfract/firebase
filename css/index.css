@@ -270,6 +270,7 @@ label {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   transition-property: height;
   transition-duration: 0.2s;
   transition-timing-function: ease-out;
@@ -604,7 +605,7 @@ form div {
 
 .error {
   padding: 8px 16px;
-  color: var(--blue);
+  color: var(--red);
 }
 
 .scroll {
