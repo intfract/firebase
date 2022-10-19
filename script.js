@@ -1,3 +1,32 @@
+function nav() {
+  document.querySelector('nav').innerHTML = `
+  <div class="logo">
+    <span>INTFRACT</span>
+  </div>
+  <div class="menu">
+    <a href="../" class="link">HOME</a>
+    <a href="../about/" class="link">ABOUT</a>
+    <a href="#" class="link">BLOG</a>
+  </div>
+  <div class="actions">
+    <a class="btn" href="../join/">Login</a>
+    <a class="btn" href="../join/">Join</a>
+  </div>
+  <div class="toggle center"
+    onclick="this.classList.toggle('active');document.querySelector('.menu').classList.toggle('active')">
+    <svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="50">
+      <path class="line top"
+        d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+      <path class="line middle" d="m 70,50 h -40" />
+      <path class="line bottom"
+        d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+    </svg>
+  </div>
+  `
+}
+
+nav()
+
 function ripple() {
   const buttons = document.querySelectorAll('button:not(button[type=submit])')
   const tags = document.querySelectorAll('.tag')
@@ -62,12 +91,13 @@ auth.onAuthStateChanged(user => {
     e.addEventListener('click', e => {
       e.preventDefault()
       auth.signOut()
+      snack(`Logged out!`, 'DISMISS')
       document.querySelector('nav .actions').innerHTML = `
       <a class="btn" href="../join/">Login</a>
       <a class="btn" href="../join/">Join</a>
       `
     })
   } else {
-    console.log(`user signed out`)
+
   }
 })

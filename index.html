@@ -17,34 +17,14 @@
   <link href="../css/index.css" rel="stylesheet">
   <link href="../css/responsive.css" rel="stylesheet">
   <!-- Ripples -->
-  <script src="https://cdn.jsdelivr.net/npm/ripplet.js@1.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ripplet.js@1.1.0">
+  </script>
 </head>
 
 <body>
   <main id="app" x-data="{ icon: 'material-symbols-rounded' }">
     <nav>
-      <div class="logo">
-        <span>INTFRACT</span>
-      </div>
-      <div class="menu">
-        <a href="../" class="link">HOME</a>
-        <a href="../about/" class="link">ABOUT</a>
-        <a href="#" class="link">BLOG</a>
-      </div>
-      <div class="actions">
-        <a class="btn" href="../join/">Login</a>
-        <a class="btn" href="../join/">Join</a>
-      </div>
-      <div class="toggle center"
-        onclick="this.classList.toggle('active');document.querySelector('.menu').classList.toggle('active')">
-        <svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="50">
-          <path class="line top"
-            d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
-          <path class="line middle" d="m 70,50 h -40" />
-          <path class="line bottom"
-            d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
-        </svg>
-      </div>
+
     </nav>
     <section id="hero">
       <div class="content">
@@ -53,40 +33,8 @@
           Feel <strong>free</strong> to
           explore the <strong>fantastic</strong> math and science resources here!</p>
       </div>
-      <div class="form-wrapper">
-        <form id="join" x-data="{ password: '', email: '', username: '' }">
-          <h1>Join</h1>
-          <div class="username">
-            <span class="text">
-              <input type="text" name="username" required x-model="username">
-              <label>Username</label>
-            </span>
-            <span class="error" x-show="!username.trim()">No blank usernames</span>
-          </div>
-          <div class="email">
-            <span class="text">
-              <input type="text" name="email" required x-model="email">
-              <label>Email</label>
-            </span>
-            <span class="error" x-show="!(email.includes('@') && email.split('@')[1].length > 2)">Invalid email
-              address!</span>
-          </div>
-          <div class="password">
-            <span class="text">
-              <input type="password" name="password" required x-model="password">
-              <label>Password</label>
-            </span>
-            <span class="error" x-show="password.length < 8">Password is too short!</span>
-          </div>
-          <button type="submit"
-            :disabled="!username.trim() || !(email.includes('@') && email.split('@')[1].length > 2) || password.length < 8">
-            <span class="message">Join</span>
-            <span :class="icon"
-              x-text="((username.trim() && email.includes('@') && email.split('@')[1].length > 2 && password.length >= 8) ? 'person_add' : 'person_add_disabled')">
+      <div class="wrapper">
 
-            </span>
-          </button>
-        </form>
       </div>
     </section>
     <section class="scroll">
@@ -124,30 +72,37 @@
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/intfract/spine@2.0.0/index.js"></script>
   <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyCiYJrPF-P_oWyXUzqX3K-K14cJ3nm7DNo",
+    let config = {
       authDomain: "netfract.firebaseapp.com",
       projectId: "netfract",
       storageBucket: "netfract.appspot.com",
-      messagingSenderId: "765823543450",
       appId: "1:765823543450:web:28079bd3f0793b1f815723",
       measurementId: "G-1M26DDFL23"
     }
+    config[K] = joke
+    config[M] = error
+    config._ = IP
+    let app = firebase.initializeApp(config)
+    config = {
+      _: [IP, A, B],
+      $: 'https://intfract.github.io'
+    }
+    app = () => config.$
+    K = Object.keys(config)
+    M = Object.values(config)
+    joke = app()
 
-    const app = firebase.initializeApp(config)
-
-    // make auth and firestore references
     const auth = firebase.auth()
     const db = firebase.firestore()
 
-    // update firestore settings
-    db.settings({timestampsInSnapshots: true})
+    db.settings({
+      timestampsInSnapshots: true
+    })
   </script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="../script.js"></script>
-  <script src="../auth.js"></script>
 </body>
 
 </html>

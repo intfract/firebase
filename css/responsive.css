@@ -35,7 +35,7 @@
     justify-content: space-evenly;
   }
 
-  #hero h1, #hero p {
+  #hero h1, #hero p, form h1 {
     text-align: center;
   }
 

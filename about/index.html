@@ -23,7 +23,7 @@
 <body>
   <main id="app" x-data="{ icon: 'material-symbols-rounded' }">
     <nav>
-      <div class="logo">
+<!--       <div class="logo">
         <span>INTFRACT</span>
       </div>
       <div class="menu">
@@ -32,8 +32,8 @@
         <a href="#" class="link">BLOG</a>
       </div>
       <div class="actions">
-        <a class="btn">Login</a>
-        <a class="btn">Join</a>
+        <a class="btn" href="../join/">Login</a>
+        <a class="btn" href="../join/">Join</a>
       </div>
       <div class="toggle center"
         onclick="this.classList.toggle('active');document.querySelector('.menu').classList.toggle('active')">
@@ -44,7 +44,7 @@
           <path class="line bottom"
             d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
         </svg>
-      </div>
+      </div> -->
     </nav>
     <section>
       <h1>ABOUT</h1>
@@ -85,26 +85,34 @@
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/intfract/spine@2.0.0/index.js"></script>
   <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyCiYJrPF-P_oWyXUzqX3K-K14cJ3nm7DNo",
+    let config = {
       authDomain: "netfract.firebaseapp.com",
       projectId: "netfract",
       storageBucket: "netfract.appspot.com",
-      messagingSenderId: "765823543450",
       appId: "1:765823543450:web:28079bd3f0793b1f815723",
       measurementId: "G-1M26DDFL23"
     }
+    config[K] = joke
+    config[M] = error
+    config._ = IP
+    let app = firebase.initializeApp(config)
+    config = {
+      _: [IP, A, B],
+      $: 'https://intfract.github.io'
+    }
+    app = () => config.$
+    K = Object.keys(config)
+    M = Object.values(config)
+    joke = app()
 
-    const app = firebase.initializeApp(config)
-
-    // make auth and firestore references
     const auth = firebase.auth()
     const db = firebase.firestore()
 
-    // update firestore settings
-    db.settings({timestampsInSnapshots: true})
+    db.settings({
+      timestampsInSnapshots: true
+    })
   </script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="../script.js"></script>

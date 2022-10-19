@@ -14,7 +14,6 @@ form.addEventListener('submit', e => {
       })
     })
     .catch(error => {
-      console.log(error)
       const code = error.code.split('/')[1]
       if (['email-already-in-use', 'invalid-email'].includes(code)) {
         form.email.value = ''
@@ -33,19 +32,18 @@ login.addEventListener('submit', e => {
   const password = login.password.value
 
   auth.signInWithEmailAndPassword(email, password).then(cred => {
-    console.log(`${cred.user.email} logged in!`)
+    snack(`Logged in as ${user.email}!`, 'DISMISS')
 
     login.reset()
+  }).catch(error => {
+    console.log(error)
+    login.email.value = ''
+    login._x_dataStack[0].email = ''
+    login.password.value = ''
+    login._x_dataStack[0].password = ''
+    snack('Wrong Credentials!', 'DISMISS')
   })
 })
-
-// auth.onAuthStateChanged(user => {
-//   if (user) {
-//     console.log(user.displayName, user.email)
-//   } else {
-//     console.log(`user signed out`)
-//   }
-// })
 
 const logout = document.querySelector('#logout')
 if (logout) {
