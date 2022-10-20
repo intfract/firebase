@@ -1,12 +1,14 @@
-function nav() {
+function nav(a) {
+  const menu = []
+  for (const item of a) {
+    menu.push(`<a href="../${(item === 'home') ? '' : item}/" class="link">${item.toUpperCase()}</a>`)
+  }
   document.querySelector('nav').innerHTML = `
   <div class="logo">
     <span>INTFRACT</span>
   </div>
   <div class="menu">
-    <a href="../" class="link">HOME</a>
-    <a href="../about/" class="link">ABOUT</a>
-    <a href="#" class="link">BLOG</a>
+    ${menu.join('')}
   </div>
   <div class="actions">
     <a class="btn" href="../join/">Login</a>
@@ -25,7 +27,7 @@ function nav() {
   `
 }
 
-nav()
+nav(['home', 'about', 'courses'])
 
 function ripple() {
   const buttons = document.querySelectorAll('button:not(button[type=submit])')

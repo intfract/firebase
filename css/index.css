@@ -245,6 +245,10 @@ label {
   height: 160px;
 }
 
+.card:hover .material-symbols-rounded {
+  transform: rotate(22.5deg);
+}
+
 .card:hover .body {
   height: calc((var(--heading-size) * 1.25) + 64px + 28px + 16px + 160px);
 }
@@ -291,6 +295,9 @@ label {
 .card .media .material-symbols-rounded {
   font-size: 64px;
   color: var(--light);
+  transition-property: transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
 }
 
 .card .body .content {

@@ -1,3 +1,3 @@
-# Personal Website
+# Int Fract 
 
-Homepage!
+Learn math science,and coding online for free. 
