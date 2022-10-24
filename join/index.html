@@ -23,7 +23,7 @@
 <body>
   <main id="app" x-data="{ icon: 'material-symbols-rounded' }">
     <nav>
-      
+
     </nav>
     <section>
       <h1>JOIN THE JOURNEY</h1>
@@ -57,13 +57,7 @@
               :disabled="!username.trim() || !(email.includes('@') && email.split('@')[1].length > 2) || password.length < 8">
               <span class="message">Join</span>
               <span :class="icon"
-                x-show="username.trim() && email.includes('@') && email.split('@')[1].length > 2 && password.length >= 8">
-                person_add
-              </span>
-              <span :class="icon"
-                x-show="!username.trim() || !(email.includes('@') && email.split('@')[1].length > 2) || password.length < 8">
-                person_add_disabled
-              </span>
+                x-text="(username.trim() && email.includes('@') && email.split('@')[1].length > 2 && password.length >= 8) ? 'person_add' : 'person_add_disabled'"></span>
             </button>
           </form>
         </span>
@@ -88,7 +82,7 @@
                 <input type="text" name="email" required x-model="email">
                 <label>Email</label>
               </span>
-              <span class="error" x-show="!(email.includes('@') && email.split('@')[1].length > 2)">Invalid email
+              <span class="error" x-show="!email.length">Invalid email
                 address!</span>
             </div>
             <div class="password">
@@ -98,7 +92,7 @@
               </span>
               <span class="error" x-show="!password.length">Wrong password!</span>
             </div>
-            <button type="submit">
+            <button type="submit" :disabled="!email.length || !password.length">
               <span class="message">Continue</span>
             </button>
           </form>

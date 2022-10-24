@@ -227,7 +227,7 @@ label {
 .card {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 320px;
   height: calc((var(--heading-size) * 1.25) + 64px + 28px + 16px + 320px);
   border-radius: 8px;
   overflow: hidden;
@@ -333,6 +333,7 @@ label {
   color: var(--light);
   padding: 4px 16px;
   border-radius: 128px;
+  font-size: 16px;
   transition-property: background;
   transition-duration: 0.2s;
   transition-timing-function: ease-out;
@@ -360,6 +361,7 @@ section > .content {
   align-items: center;
   justify-content: space-between;
   width: 1200px;
+  flex-wrap: wrap;
 }
 
 section > .content .panel {
@@ -376,6 +378,14 @@ section > .content {
 }
 
 section > .content:last-child {
+  margin: 0;
+}
+
+.content .card {
+  margin: 0 0 32px 0;
+}
+
+.content .card:last-child {
   margin: 0;
 }
 
