@@ -366,7 +366,9 @@ section > .content {
 
 section > .content .panel {
   width: 320px;
-/*   height: 100%; */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 section > .content .read {
